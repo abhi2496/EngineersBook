@@ -172,7 +172,7 @@ public class AddAnswerActivity extends AppCompatActivity {
         }
         partMap.put("text", RequestBody.create(MediaType.parse("text/plain"), et_answer.getText().toString()));
         partMap.put("user_id", RequestBody.create(MediaType.parse("text/plain"), "1"));
-        partMap.put("dept_id", RequestBody.create(MediaType.parse("text/plain"), "7"));
+        partMap.put("doubt_id", RequestBody.create(MediaType.parse("text/plain"), "7"));
 
         APIManager api = retrofit.create(APIManager.class);
 

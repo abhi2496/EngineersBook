@@ -8,22 +8,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.abhishekkoranne.engineersbook.Adapter.DisapprovalAdapter;
 import com.example.abhishekkoranne.engineersbook.R;
-import com.example.abhishekkoranne.engineersbook.Adapter.ApprovalAdapter;
 import com.example.abhishekkoranne.engineersbook.model.Student;
 import com.example.abhishekkoranne.engineersbook.model.User;
 
 import java.util.ArrayList;
 
-public class ApprovalActivity extends AppCompatActivity {
-    RecyclerView rv_approval;
+public class DisapprovalActivity extends AppCompatActivity {
+    RecyclerView rv_disapproval;
 
     ArrayList<Student> studentsList = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_approval);
-        rv_approval= (RecyclerView) findViewById(R.id.rv_approval);
+        setContentView(R.layout.activity_disapproval);
+        rv_disapproval= (RecyclerView) findViewById(R.id.rv_disapproval);
 
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -47,8 +49,8 @@ public class ApprovalActivity extends AppCompatActivity {
         studentsList.add(s4);
         studentsList.add(s5);
 
-        rv_approval.setAdapter(new ApprovalAdapter(this,studentsList));
-        rv_approval.setLayoutManager(new LinearLayoutManager(this));
+        rv_disapproval.setAdapter(new DisapprovalAdapter(this,studentsList));
+        rv_disapproval.setLayoutManager(new LinearLayoutManager(this));
 
     }
     @Override

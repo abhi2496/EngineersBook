@@ -1,5 +1,6 @@
 package com.example.abhishekkoranne.engineersbook.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,16 +28,18 @@ import java.util.Calendar;
 
 
 public class ChatActivity extends AppCompatActivity {
-
+ //   Intent ii;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     RecyclerView rvchat;
-    int myUserId = 1, otherUserId = 2;
+    int myUserId = 1, otherUserId ;
+
     EditText etmsg;
     ImageButton send;
     ChatAdapter adapt;
     final ArrayList<Chat> chatList = new ArrayList<>();
     long timestamp;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,7 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         rvchat = findViewById(R.id.rvchat);
-
+        otherUserId= getIntent().getIntExtra("otheruser", 2);
         adapt = new ChatAdapter(this, chatList, myUserId, otherUserId);
         rvchat.setAdapter(adapt);
         rvchat.setLayoutManager(new LinearLayoutManager(this));
@@ -55,8 +58,17 @@ public class ChatActivity extends AppCompatActivity {
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        if (otherUserId == 2) {
+            name = "Shabbir";
+        } else if (otherUserId == 3) {
+            name = "Jigish";
+        } else {
+            name = "Himalay";
+        }
 
-        myRef.child(getUserIdNode(myUserId, otherUserId))
+        myRef.child("Chatting")
+                .child(getUserIdNode(myUserId, otherUserId))
+                .child("messages")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -94,10 +106,35 @@ public class ChatActivity extends AppCompatActivity {
                     timestamp = Calendar.getInstance().getTimeInMillis();
                     Chat chat = new Chat(myUserId, etmsg.getText().toString().trim(), timestamp);
 
-                    myRef.child(getUserIdNode(myUserId, otherUserId))
+                    myRef.child("Chatting")
+                            .child(getUserIdNode(myUserId, otherUserId))
+                            .child("messages")
                             .child(timestamp + "-" + myUserId)
                             .setValue(chat);
 
+                    myRef.child("Chatting")
+                            .child(getUserIdNode(myUserId, otherUserId))
+                            .child("chatInfo")
+                            .child(myUserId + "")
+                            .setValue("Abhishek");
+
+                    myRef.child("Chatting")
+                            .child(getUserIdNode(myUserId, otherUserId))
+                            .child("chatInfo")
+                            .child(otherUserId + "")
+                            .setValue(name);
+
+/*                    myRef.child("Chatting")
+                            .child(getUserIdNode(myUserId, otherUserId))
+                            .child("chatInfo")
+                            .child(myUserId+"")
+                            .setValue("Shabbir");
+
+                    myRef.child("Chatting")
+                            .child(getUserIdNode(myUserId, otherUserId))
+                            .child("chatInfo")
+                            .child(otherUserId+"")
+                            .setValue("Abhishek");*/
                     etmsg.setText("");
                     chatList.clear();
                 }
