@@ -11,8 +11,9 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.abhishekkoranne.engineersbook.R;
+import com.example.abhishekkoranne.engineersbook.Activity.DisapprovalActivity;
 import com.example.abhishekkoranne.engineersbook.Activity.ProfileActivity;
+import com.example.abhishekkoranne.engineersbook.R;
 import com.example.abhishekkoranne.engineersbook.model.Student;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -21,15 +22,17 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.ArrayList;
 
+/**
+ * Created by Jiggy on 14-04-2018.
+ */
 
-
-public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ApprovalViewHolder> {
+public class DisapprovalAdapter extends RecyclerView.Adapter<DisapprovalAdapter.DisapprovalViewHolder> {
     Context cont;
     ArrayList<Student> studentsList = new ArrayList<>();
     DisplayImageOptions options;
     ImageLoader imgloader;
 
-    public ApprovalAdapter(Context cont, ArrayList<Student> studentsList) {
+    public DisapprovalAdapter(Context cont, ArrayList<Student> studentsList) {
         this.cont = cont;
         this.studentsList = studentsList;
         options = new DisplayImageOptions.Builder().build();
@@ -37,14 +40,14 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.Approv
     }
 
     @Override
-    public ApprovalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DisapprovalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater myInflater = LayoutInflater.from(cont);
-        View myView = myInflater.inflate(R.layout.approval_item, parent, false);
-        return new ApprovalViewHolder(myView);
+        View myView = myInflater.inflate(R.layout.disapproval_item, parent, false);
+        return new DisapprovalViewHolder(myView);
     }
 
     @Override
-    public void onBindViewHolder(ApprovalViewHolder holder, int position) {
+    public void onBindViewHolder(DisapprovalViewHolder holder, int position) {
         imgloader.displayImage("http://dl.glitter-graphics.com/pub/844/844251efzrltedz0.gif", holder.profile_pic, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
@@ -81,7 +84,8 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.Approv
                 cont.startActivity(new Intent(cont, ProfileActivity.class));
             }
         });
-        holder.user_enrollment_number.setText(""+Long.parseLong(studentsList.get(position).getEnrollmentNumber()));
+        holder.user_enrollment_number.setText("" + Long.parseLong(studentsList.get(position).getEnrollmentNumber()));
+
     }
 
     @Override
@@ -89,14 +93,13 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.Approv
         return studentsList.size();
     }
 
-    public class ApprovalViewHolder extends RecyclerView.ViewHolder {
+    public class DisapprovalViewHolder extends RecyclerView.ViewHolder {
         ImageView profile_pic;
         TextView user_name, user_enrollment_number;
         CheckBox cb_approve;
 
-        public ApprovalViewHolder(View itemView) {
+        public DisapprovalViewHolder(View itemView) {
             super(itemView);
-
             user_name = (TextView) itemView.findViewById(R.id.user_name);
             user_enrollment_number = (TextView) itemView.findViewById(R.id.user_enrollment_number);
             profile_pic = (ImageView) itemView.findViewById(R.id.profile_pic);
