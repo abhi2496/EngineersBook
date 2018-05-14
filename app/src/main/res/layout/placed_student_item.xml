@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#f2e9e5e5">
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/linear_layout_comment"
+        android:id="@+id/linear_layout_placed_stud"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
@@ -41,34 +41,22 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/timestamp"
+                android:id="@+id/tv_enrollment_number"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_weight="2"
-                android:text="Timestamp"
+                android:text="140370107559"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp" />
         </LinearLayout>
-
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/tv_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/linear_layout_comment"
-        android:layout_alignStart="@+id/linear_layout_comment"
-        android:layout_marginTop="8dp"
-        android:text="This is comment text..."
-        android:textSize="14sp"
-        android:layout_below="@id/linear_layout_comment"/>
-
     <View
-        android:layout_below="@+id/tv_comment"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/linear_layout_placed_stud"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginTop="8dp"
         android:background="#ffffff"></View>
 
 </RelativeLayout>
+

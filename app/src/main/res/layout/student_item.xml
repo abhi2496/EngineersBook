@@ -41,11 +41,11 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/timestamp"
+                android:id="@+id/enrollment"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_weight="2"
-                android:text="Timestamp"
+                android:text="Enrollment"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -53,7 +53,7 @@
     </LinearLayout>
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/tv_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         android:text="This is comment text..."
         android:textSize="14sp"
         android:layout_below="@id/linear_layout_comment"/>
-
+-->
     <View
         android:layout_below="@+id/tv_comment"
         android:layout_marginTop="8dp"

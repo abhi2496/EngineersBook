@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_disapproval_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#f2e9e5e5">
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_weight="1"
+        android:background="#d3cccccc"></View>
 
     <LinearLayout
-        android:id="@+id/linear_layout_comment"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="16dp"
@@ -14,16 +20,19 @@
         android:layout_weight="5"
         android:orientation="horizontal">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_pic"
-            android:layout_width="64dp"
+            android:layout_width="32dp"
             android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_marginRight="4dp"
-            android:layout_weight="10"
-            android:src="@drawable/jiggy" />
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/jiggy_propic"
+            app:civ_border_color="#ffffff"
+            app:civ_border_width="1dp" />
 
         <LinearLayout
+            android:paddingTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
@@ -38,37 +47,25 @@
                 android:layout_weight="1"
                 android:text="Name"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/timestamp"
+                android:id="@+id/user_enrollment_number"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_weight="2"
-                android:text="Timestamp"
+                android:text="140370107559"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <CheckBox
+            android:paddingTop="2dp"
+            android:id="@+id/cb_disapprove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disapprove"
+            android:textSize="18sp" />
+
     </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/tv_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/linear_layout_comment"
-        android:layout_alignStart="@+id/linear_layout_comment"
-        android:layout_marginTop="8dp"
-        android:text="This is comment text..."
-        android:textSize="14sp"
-        android:layout_below="@id/linear_layout_comment"/>
-
-    <View
-        android:layout_below="@+id/tv_comment"
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#ffffff"></View>
-
-</RelativeLayout>
+</LinearLayout>

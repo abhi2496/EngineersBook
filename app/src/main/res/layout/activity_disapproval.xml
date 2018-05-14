@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context="com.example.abhishekkoranne.engineersbook.Activity.ApprovalActivity">
+    tools:context=".Activity.DisapprovalActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_approval"
+        android:id="@+id/rv_disapproval"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
     <Button
-        android:layout_alignBottom="@+id/rv_approval"
+        android:layout_alignBottom="@+id/rv_disapproval"
         android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="36dp"
